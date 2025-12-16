@@ -57,7 +57,8 @@ const Login: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex-column">
+        <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
+        <div className="flex-column text-left">
           <label>Email</label>
         </div>
         <div className="inputForm">
@@ -82,7 +83,7 @@ const Login: React.FC = () => {
           <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
         )}
 
-        <div className="flex-column">
+        <div className="flex-column text-left">
           <label>Password</label>
         </div>
         <div className="inputForm">
