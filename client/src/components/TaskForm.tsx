@@ -148,7 +148,6 @@ const TaskForm: React.FC = () => {
                   <p className="form-error mt-1">{errors.title.message}</p>
                 )}
               </div>
-
               {/* Description Field */}
               <div className="input-group">
                 <textarea
@@ -167,7 +166,6 @@ const TaskForm: React.FC = () => {
                   </p>
                 )}
               </div>
-
               {/* Due Date Field */}
               <div className="input-group">
                 <input
@@ -184,7 +182,6 @@ const TaskForm: React.FC = () => {
                   <p className="form-error mt-1">{errors.dueDate.message}</p>
                 )}
               </div>
-
               {/* Priority Field */}
               <div className="input-group">
                 <select
@@ -205,7 +202,6 @@ const TaskForm: React.FC = () => {
                   <p className="form-error mt-1">{errors.priority.message}</p>
                 )}
               </div>
-
               {/* Status Field */}
               <div className="input-group">
                 <select
@@ -226,8 +222,7 @@ const TaskForm: React.FC = () => {
                   <p className="form-error mt-1">{errors.status.message}</p>
                 )}
               </div>
-
-              {/* Assign To Field */}
+              {/* Assign To Field
               <div className="input-group">
                 <input
                   type="text"
@@ -244,8 +239,7 @@ const TaskForm: React.FC = () => {
                     {errors.assignedToId.message}
                   </p>
                 )}
-              </div>
-
+              </div> */}
               <div className="flex justify-end space-x-3 pt-6">
                 <button
                   type="button"
