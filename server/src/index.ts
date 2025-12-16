@@ -24,7 +24,7 @@ const server = createServer(app);
 const io = new Server(server, {
   cors: {
     origin: process.env.NODE_ENV === 'production' 
-      ? ['https://your-frontend-domain.com'] 
+      ? ['https://task-manager-alpha-five-87.vercel.app'] 
       : ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5173', 'http://localhost'],
     credentials: true
   }
@@ -41,7 +41,7 @@ taskService.setSocketIO(io);
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.com'] 
+    ? ['https://task-manager-alpha-five-87.vercel.app'] 
     : ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5173', 'http://localhost'],
   credentials: true
 }));
