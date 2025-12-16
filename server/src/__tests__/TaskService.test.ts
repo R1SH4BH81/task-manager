@@ -22,33 +22,33 @@ describe('TaskService', () => {
         description: 'Test Description',
         dueDate: new Date(),
         priority: Priority.Medium as any,
-        status: Status.ToDo as any
+        status: Status.ToDo as any,
+        assignedToId: null, // ✅ REQUIRED FIX
       };
-
+  
       const mockCreatedTask = {
         id: '1',
         ...mockTaskData,
         creatorId: 'user1',
-        assignedToId: null,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       };
-
-      // Mock the repository method
+  
       const taskRepositoryMock = (taskService as any).taskRepository;
       taskRepositoryMock.create.mockResolvedValue(mockCreatedTask);
-
+  
       const result = await taskService.createTask(mockTaskData, 'user1');
-
+  
       expect(result).toEqual(mockCreatedTask);
       expect(taskRepositoryMock.create).toHaveBeenCalledWith({
         ...mockTaskData,
         description: 'Test Description',
         assignedToId: null,
-        creatorId: 'user1'
+        creatorId: 'user1',
       });
     });
   });
+  
 
   describe('updateTask', () => {
     it('should update a task when user is authorized', async () => {
