@@ -79,30 +79,29 @@ const TaskForm: React.FC = () => {
     setLoading(true);
     setError(null);
 
+    const sanitizedData = {
+      ...data,
+      assignedToId: data.assignedToId?.trim() || null, // ✅ FIX
+    };
+
     try {
       const url = isEditing ? api.task(id!) : api.tasks;
       const method = isEditing ? "PUT" : "POST";
 
       const response = await api.authenticatedRequest(url, {
         method,
-        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json", // ✅ FIX
+        },
+        body: JSON.stringify(sanitizedData),
       });
 
       if (response.ok) {
         navigate("/tasks");
       } else {
         const result = await response.json();
-        setError(
-          result.message ||
-            `${isEditing ? "Updating" : "Creating"} task failed`,
-        );
+        setError(result.message || "Task failed");
       }
-    } catch (err) {
-      setError(
-        `An error occurred while ${
-          isEditing ? "updating" : "creating"
-        } the task`,
-      );
     } finally {
       setLoading(false);
     }

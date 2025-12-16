@@ -14,32 +14,21 @@ export class TaskService {
   setSocketIO(io: Server) {
     this.io = io;
   }
-
-  async createTask(taskData: CreateTaskType, creatorId: string): Promise<Task> {
-    try {
-      // Ensure description is null if not provided and assignedToId is properly typed
-      const taskDataForDb = {
-        ...taskData,
-        description: taskData.description ?? null,
-        assignedToId: taskData.assignedToId ?? null
-      };
-
-      const task = await this.taskRepository.create({
-        ...taskDataForDb,
-        creatorId
-      });
-
-      // Notify assigned user if task is assigned
-      if (task.assignedToId && this.io) {
-        this.io.to(task.assignedToId).emit('taskAssigned', task);
-      }
-
-      return task;
-    } catch (error) {
-      console.error('Error in TaskService.createTask:', error);
-      throw error;
+  async createTask(taskData: CreateTaskType, creatorId: string) {
+    const task = await this.taskRepository.create({
+      ...taskData,
+      description: taskData.description ?? null,
+      assignedToId: taskData.assignedToId ?? null,
+      creatorId,
+    });
+  
+    if (task.assignedToId && this.io) {
+      this.io.to(task.assignedToId).emit('taskAssigned', task);
     }
+  
+    return task;
   }
+  
 
   async getTaskById(id: string): Promise<Task | null> {
     try {
