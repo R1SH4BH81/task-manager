@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getSocket, disconnectSocket } from "../utils/socket";
+import { api } from "../utils/api";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,10 +26,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     // Fetch user profile
     const fetchProfile = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        const response = await api.authenticatedRequest(api.profile, {
+          method: "GET",
         });
 
         if (response.ok) {
@@ -48,7 +47,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         navigate("/login");
       }
     };
-
     fetchProfile();
   }, [navigate]);
 

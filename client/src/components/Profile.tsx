@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../utils/api";
 
 const profileSchema = z.object({
   name: z
@@ -41,10 +42,8 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/profile", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
+        const response = await api.authenticatedRequest(api.profile, {
+          method: "GET",
         });
 
         if (response.ok) {
@@ -73,12 +72,8 @@ const Profile: React.FC = () => {
     setSuccess(null);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
+      const response = await api.authenticatedRequest(api.profile, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
         body: JSON.stringify(data),
       });
 

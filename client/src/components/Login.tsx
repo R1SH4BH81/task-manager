@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate, Link } from "react-router-dom";
+import { api } from "../utils/api";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -28,7 +29,7 @@ const Login: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(api.login, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

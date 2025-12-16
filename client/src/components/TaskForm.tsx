@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../utils/api";
 
 const taskSchema = z.object({
   title: z
@@ -10,7 +11,7 @@ const taskSchema = z.object({
     .min(1, "Title is required")
     .max(100, "Title must be less than 100 characters"),
   description: z.string().optional(),
-  dueDate: z.string().min(1, "Due date is required"),
+  dueDate: z.string().min(1, "Due date is required"), // Keep as string to match HTML input
   priority: z.enum(["Low", "Medium", "High", "Urgent"]),
   status: z.enum(["ToDo", "InProgress", "Review", "Completed"]),
   assignedToId: z.string().optional(),
@@ -48,10 +49,8 @@ const TaskForm: React.FC = () => {
     if (isEditing) {
       const fetchTask = async () => {
         try {
-          const response = await fetch(`/api/tasks/${id}`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
+          const response = await api.authenticatedRequest(api.task(id!), {
+            method: "GET",
           });
 
           if (response.ok) {
@@ -81,16 +80,11 @@ const TaskForm: React.FC = () => {
     setError(null);
 
     try {
-      const url = isEditing ? `/api/tasks/${id}` : "/api/tasks";
-
+      const url = isEditing ? api.task(id!) : api.tasks;
       const method = isEditing ? "PUT" : "POST";
 
-      const response = await fetch(url, {
+      const response = await api.authenticatedRequest(url, {
         method,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
         body: JSON.stringify(data),
       });
 

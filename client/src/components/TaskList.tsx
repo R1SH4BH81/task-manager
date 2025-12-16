@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
+import { api } from "../utils/api";
 
 interface Task {
   id: string;
@@ -63,11 +64,8 @@ const TaskList: React.FC = () => {
   const handleDelete = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this task?")) {
       try {
-        const response = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+        const response = await api.authenticatedRequest(api.task(id), {
           method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
         });
 
         if (response.ok) {

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../utils/api";
 
 const registerSchema = z.object({
   name: z
@@ -33,7 +34,7 @@ const Register: React.FC = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(api.register, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
