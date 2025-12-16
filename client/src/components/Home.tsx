@@ -12,12 +12,15 @@ const Home: React.FC = () => {
           <p className="text-gray-600">Organize your tasks efficiently</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 space-y-4">
-          <Link to="/login" className="btn btn-primary w-full">
+        <div className="flex flex-col md:flex-row md:justify-center gap-4">
+          <Link to="/login" className="btn btn-primary w-full sm:w-auto p-5 ">
             Sign In
           </Link>
 
-          <Link to="/register" className="btn btn-secondary w-full">
+          <Link
+            to="/register"
+            className="btn btn-secondary w-full sm:w-auto p-5"
+          >
             Create Account
           </Link>
         </div>
