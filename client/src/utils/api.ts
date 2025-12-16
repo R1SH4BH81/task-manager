@@ -10,6 +10,7 @@ export const api = {
   
   // Task endpoints
   tasks: `${API_BASE_URL}/api/tasks`,
+  myTasks: `${API_BASE_URL}/api/tasks/my`,
   task: (id: string) => `${API_BASE_URL}/api/tasks/${id}`,
   
   // Helper function to make authenticated requests

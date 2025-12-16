@@ -35,7 +35,7 @@ const TaskList: React.FC = () => {
     error,
     isLoading,
     mutate,
-  } = useSWR<Task[]>("http://localhost:5000/api/tasks/my", fetcher);
+  } = useSWR<Task[]>(api.myTasks, fetcher);
 
   // Filter and sort tasks
   useEffect(() => {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useSWR from "swr";
+import { api } from "../utils/api";
 
 interface Task {
   id: string;
@@ -27,7 +28,7 @@ const Dashboard: React.FC = () => {
     data: tasks,
     error,
     isLoading,
-  } = useSWR<Task[]>("http://localhost:5000/api/tasks/my", fetcher);
+  } = useSWR<Task[]>(api.myTasks, fetcher);
 
   const [filter, setFilter] = useState<
     "all" | "assigned" | "created" | "overdue"
