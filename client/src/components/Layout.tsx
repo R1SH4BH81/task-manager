@@ -127,26 +127,26 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </span>
                 </div>
               </div>
-              <div className="ml-3">
+              <div className="ml-3 flex-1 min-w-0">
                 {user && (
-                  <div className="text-base font-medium text-gray-800">
+                  <div className="text-base font-medium text-gray-800 truncate">
                     {user.name}
                   </div>
                 )}
                 {user && (
-                  <div className="text-sm font-medium text-gray-500">
+                  <div className="text-sm font-medium text-gray-500 truncate">
                     {user.email}
                   </div>
                 )}
               </div>
-            </div>
-            <div className="mt-3 space-y-1 px-2">
-              <button
-                onClick={handleLogout}
-                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-              >
-                Logout
-              </button>
+              <div className="ml-3">
+                <button
+                  onClick={handleLogout}
+                  className="text-sm font-medium text-gray-500 hover:text-gray-700"
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -154,7 +154,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       {/* Main content */}
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">{children}</div>
+        <div className="max-w-7xl mx-auto py-4 sm:py-6 px-2 sm:px-6 lg:px-8">
+          {children}
+        </div>
       </main>
     </div>
   );

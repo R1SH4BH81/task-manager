@@ -256,13 +256,39 @@ body {
 
 /* Responsive utilities */
 @media (max-width: 640px) {
+  .nav-link-active, .nav-link-inactive {
+    @apply text-base py-2;
+  }
+  
   .sm-hidden {
     display: none;
   }
 
   .form {
-    width: 90%;
-    padding: 10px;
+    width: 95%;
+    padding: 8px;
+  }
+  
+  /* Reduce padding on small screens */
+  .card-body {
+    @apply p-3;
+  }
+  
+  .px-4 {
+    @apply px-2;
+  }
+  
+  .py-6 {
+    @apply py-3;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-danger {
+    @apply px-3 py-1.5 text-xs;
+  }
+  
+  .button-submit {
+    height: 44px;
+    font-size: 14px;
   }
 }
 
@@ -270,19 +296,6 @@ body {
   .sm-visible {
     display: block;
   }
-}
-
-/* Button styles */
-.btn-primary {
-  @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
-}
-
-.btn-secondary {
-  @apply inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
-}
-
-.btn-danger {
-  @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500;
 }
 
 .form-error {
