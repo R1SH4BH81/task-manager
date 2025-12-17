@@ -35,18 +35,26 @@ This will start all services:
 - Backend API: http://localhost:5000
 - Database: PostgreSQL on port 5432
 
-### Screenshots
-Dashboard
-<img width="1525" height="780" alt="dashboard" src="https://github.com/user-attachments/assets/33485bf1-d0bb-4df2-9df2-a02ccf5c105c" />
-Task List
-<img width="1282" height="542" alt="task-list" src="https://github.com/user-attachments/assets/1f8d3915-e1c6-43af-9934-f336703c1549" />
-Create Task 
-<img width="881" height="811" alt="task-create" src="https://github.com/user-attachments/assets/ea4df0da-d693-44cd-9219-654e0b57ccb0" />
+## 📸 Screenshots
 
-Login
-<img width="897" height="773" alt="image" src="https://github.com/user-attachments/assets/b716574f-35ab-4337-a02a-225382ae9708" />
-Register
-<img width="773" height="705" alt="image" src="https://github.com/user-attachments/assets/38515e04-2e3a-4f13-8936-667584fe8321" />
+### 🧭 Core Application Flow
+
+| Dashboard | Task List |
+|----------|-----------|
+| <img src="https://github.com/user-attachments/assets/33485bf1-d0bb-4df2-9df2-a02ccf5c105c" alt="Dashboard" width="100%"> | <img src="https://github.com/user-attachments/assets/1f8d3915-e1c6-43af-9934-f336703c1549" alt="Task List" width="100%"> |
+
+| Create Task |
+|------------|
+| <img src="https://github.com/user-attachments/assets/ea4df0da-d693-44cd-9219-654e0b57ccb0" alt="Create Task" width="100%"> |
+
+---
+
+### 🔐 Authentication
+
+| Login | Register |
+|------|----------|
+| <img src="https://github.com/user-attachments/assets/b716574f-35ab-4337-a02a-225382ae9708" alt="Login" width="100%"> | <img src="https://github.com/user-attachments/assets/38515e04-2e3a-4f13-8936-667584fe8321" alt="Register" width="100%"> |
+
 
 
 
