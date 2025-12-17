@@ -4,6 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, Link } from "react-router-dom";
 import { api } from "../utils/api";
+import Toast from "./Toast";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -14,7 +15,11 @@ type LoginFormInputs = z.infer<typeof loginSchema>;
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const [, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error" | "warning" | "info";
+  } | null>(null);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -27,6 +32,7 @@ const Login: React.FC = () => {
 
   const onSubmit = async (data: LoginFormInputs) => {
     setLoading(true);
+    setError(null);
 
     try {
       const response = await fetch(api.login, {
@@ -42,13 +48,19 @@ const Login: React.FC = () => {
       if (response.ok) {
         // Save token to localStorage
         localStorage.setItem("token", result.token);
+        // Show success message
+        setToast({ message: "Login successful!", type: "success" });
         // Navigate to dashboard
-        navigate("/dashboard");
+        setTimeout(() => navigate("/dashboard"), 1500);
       } else {
-        setError(result.message || "Login failed");
+        const errorMessage = result.message || "Login failed";
+        setError(errorMessage);
+        setToast({ message: errorMessage, type: "error" });
       }
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      const errorMessage = "An error occurred. Please try again.";
+      setError(errorMessage);
+      setToast({ message: errorMessage, type: "error" });
     } finally {
       setLoading(false);
     }
@@ -56,6 +68,13 @@ const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-0 bg-gray-50">
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
         <div className="flex-column text-left">

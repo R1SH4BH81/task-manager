@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "../utils/api";
+import Toast from "./Toast";
 
 const registerSchema = z.object({
   name: z
@@ -19,6 +20,10 @@ type RegisterFormInputs = z.infer<typeof registerSchema>;
 const Register: React.FC = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error" | "warning" | "info";
+  } | null>(null);
   const [loading, setLoading] = useState(false);
 
   const {
@@ -47,13 +52,19 @@ const Register: React.FC = () => {
       if (response.ok) {
         // Save token to localStorage
         localStorage.setItem("token", result.token);
+        // Show success message
+        setToast({ message: "Account created successfully!", type: "success" });
         // Navigate to dashboard
-        navigate("/dashboard");
+        setTimeout(() => navigate("/dashboard"), 1500);
       } else {
-        setError(result.message || "Registration failed");
+        const errorMessage = result.message || "Registration failed";
+        setError(errorMessage);
+        setToast({ message: errorMessage, type: "error" });
       }
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      const errorMessage = "An error occurred. Please try again.";
+      setError(errorMessage);
+      setToast({ message: errorMessage, type: "error" });
     } finally {
       setLoading(false);
     }
@@ -61,6 +72,13 @@ const Register: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-2xl font-bold text-center">Register</h2>
         <div className="flex-column text-left">
@@ -133,12 +151,6 @@ const Register: React.FC = () => {
         </div>
         {errors.password && (
           <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
-        )}
-
-        {error && (
-          <div className="rounded-md bg-red-50 p-3 mt-3">
-            <div className="text-sm text-red-700">{error}</div>
-          </div>
         )}
 
         <button className="button-submit" type="submit" disabled={loading}>
