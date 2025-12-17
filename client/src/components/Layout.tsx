@@ -72,7 +72,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </Link>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <Link to="/dashboard" className="nav-link-active">
+                <Link to="/dashboard" className="nav-link-inactive">
                   Dashboard
                 </Link>
                 <Link to="/tasks" className="nav-link-inactive">
@@ -95,58 +95,62 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </button>
               </div>
             </div>
+            {/* Mobile menu button */}
+            <div className="-mr-2 flex items-center sm:hidden">
+              {/* Mobile menu button would go here if needed */}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <div className="sm:hidden">
+          <div className="pt-2 pb-3 space-y-1">
+            <Link
+              to="/dashboard"
+              className="nav-link-active block pl-3 pr-4 py-2 border-l-4"
+            >
+              Dashboard
+            </Link>
+            <Link
+              to="/tasks"
+              className="nav-link-inactive block pl-3 pr-4 py-2 border-l-4"
+            >
+              Tasks
+            </Link>
+          </div>
+          <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="flex items-center px-4">
+              <div className="flex-shrink-0">
+                <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                  <span className="text-indigo-800 font-medium">
+                    {user ? user.name.charAt(0).toUpperCase() : "U"}
+                  </span>
+                </div>
+              </div>
+              <div className="ml-3">
+                {user && (
+                  <div className="text-base font-medium text-gray-800">
+                    {user.name}
+                  </div>
+                )}
+                {user && (
+                  <div className="text-sm font-medium text-gray-500">
+                    {user.email}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="mt-3 space-y-1 px-2">
+              <button
+                onClick={handleLogout}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </nav>
-
-      {/* Mobile menu */}
-      <div className="sm:hidden">
-        <div className="pt-2 pb-3 space-y-1">
-          <Link
-            to="/dashboard"
-            className="nav-link-active block pl-3 pr-4 py-2 border-l-4"
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/tasks"
-            className="nav-link-inactive block pl-3 pr-4 py-2 border-l-4"
-          >
-            Tasks
-          </Link>
-        </div>
-        <div className="pt-4 pb-3 border-t border-gray-200">
-          <div className="flex items-center px-4">
-            <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                <span className="text-indigo-800 font-medium">
-                  {user ? user.name.charAt(0).toUpperCase() : "U"}
-                </span>
-              </div>
-            </div>
-            <div className="ml-3">
-              {user && (
-                <div className="text-base font-medium text-gray-800">
-                  {user.name}
-                </div>
-              )}
-              {user && (
-                <div className="text-sm font-medium text-gray-500">
-                  {user.email}
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="mt-3 space-y-1 px-2">
-            <button
-              onClick={handleLogout}
-              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      </div>
 
       {/* Main content */}
       <main>

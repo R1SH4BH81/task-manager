@@ -37,12 +37,6 @@ const Dashboard: React.FC = () => {
   // Filter tasks based on selected filter
   const filteredTasks =
     tasks?.filter((task) => {
-      if (filter === "assigned") {
-        return task.assignedToId;
-      }
-      if (filter === "created") {
-        return task.creatorId;
-      }
       if (filter === "overdue") {
         const dueDate = new Date(task.dueDate);
         const now = new Date();
@@ -264,8 +258,7 @@ const Dashboard: React.FC = () => {
               onChange={(e) => setFilter(e.target.value as any)}
             >
               <option value="all">All Tasks</option>
-              <option value="assigned">Assigned to Me</option>
-              <option value="created">Created by Me</option>
+
               <option value="overdue">Overdue</option>
             </select>
           </div>
