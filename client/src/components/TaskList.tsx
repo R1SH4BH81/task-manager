@@ -149,8 +149,10 @@ const TaskList: React.FC = () => {
   return (
     <div className="py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-          <h1 className="text-2xl font-bold text-gray-900">Tasks</h1>
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex-1 flex justify-center">
+            <h1 className="text-2xl font-bold text-gray-900">Task List</h1>
+          </div>
           <button
             onClick={() => navigate("/tasks/new")}
             className="btn btn-primary"

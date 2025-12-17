@@ -85,11 +85,8 @@ const Dashboard: React.FC = () => {
   return (
     <div className="py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-center items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <Link to="/tasks/new" className="btn btn-primary">
-            New Task
-          </Link>
         </div>
       </div>
 
@@ -223,26 +220,7 @@ const Dashboard: React.FC = () => {
                 >
                   All Tasks
                 </button>
-                <button
-                  onClick={() => setFilter("assigned")}
-                  className={`${
-                    filter === "assigned"
-                      ? "border-indigo-500 text-indigo-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                  } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
-                >
-                  Assigned to Me
-                </button>
-                <button
-                  onClick={() => setFilter("created")}
-                  className={`${
-                    filter === "created"
-                      ? "border-indigo-500 text-indigo-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                  } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
-                >
-                  Created by Me
-                </button>
+
                 <button
                   onClick={() => setFilter("overdue")}
                   className={`${

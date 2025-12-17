@@ -256,10 +256,6 @@ body {
 
 /* Responsive utilities */
 @media (max-width: 640px) {
-  .nav-link-active, .nav-link-inactive {
-    @apply text-base py-2;
-  }
-  
   .sm-hidden {
     display: none;
   }
