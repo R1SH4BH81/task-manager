@@ -55,7 +55,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center p-0 bg-gray-50">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-2xl font-bold text-center">Welcome Back</h2>
         <div className="flex-column text-left">
@@ -112,7 +112,6 @@ const Login: React.FC = () => {
             <input type="checkbox" id="remember" />
             <label htmlFor="remember">Remember me</label>
           </div>
-          <span className="span">Forgot password?</span>
         </div>
 
         <button className="button-submit" type="submit" disabled={loading}>

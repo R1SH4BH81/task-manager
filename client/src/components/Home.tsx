@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen flex items-center justify-center p-2 sm:p-1 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -12,14 +12,14 @@ const Home: React.FC = () => {
           <p className="text-gray-600">Organize your tasks efficiently</p>
         </div>
 
-        <div className="flex flex-col md:flex-row md:justify-center gap-4">
-          <Link to="/login" className="btn btn-primary w-full sm:w-auto p-5 ">
+        <div className="flex flex-col items-center justify-center gap-4">
+          <Link to="/login" className="btn btn-primary w-full sm:w-full p-5">
             Sign In
           </Link>
 
           <Link
             to="/register"
-            className="btn btn-secondary w-full sm:w-auto p-5"
+            className="btn btn-secondary w-full sm:w-full p-5"
           >
             Create Account
           </Link>
