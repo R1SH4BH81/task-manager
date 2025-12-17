@@ -41,11 +41,11 @@ This will start all services:
 
 | Dashboard | Task List |
 |----------|-----------|
-| <img src="https://github.com/user-attachments/assets/33485bf1-d0bb-4df2-9df2-a02ccf5c105c" alt="Dashboard" width="600" height="320"> | <img src="https://github.com/user-attachments/assets/1f8d3915-e1c6-43af-9934-f336703c1549" alt="Task List" width="600" height="320"> |
+| <img src="https://github.com/user-attachments/assets/33485bf1-d0bb-4df2-9df2-a02ccf5c105c" alt="Dashboard" width="600" height="420"> | <img src="https://github.com/user-attachments/assets/1f8d3915-e1c6-43af-9934-f336703c1549" alt="Task List" width="600" height="420"> |
 
 | Create Task |
 |------------|
-| <img src="https://github.com/user-attachments/assets/ea4df0da-d693-44cd-9219-654e0b57ccb0" alt="Create Task" width="600" height="320"> |
+| <img src="https://github.com/user-attachments/assets/ea4df0da-d693-44cd-9219-654e0b57ccb0" alt="Create Task" width="600" height="720"> |
 
 ---
 
@@ -53,7 +53,7 @@ This will start all services:
 
 | Login | Register |
 |------|----------|
-| <img src="https://github.com/user-attachments/assets/b716574f-35ab-4337-a02a-225382ae9708" alt="Login" width="600" height="320"> | <img src="https://github.com/user-attachments/assets/38515e04-2e3a-4f13-8936-667584fe8321" alt="Register" width="600" height="320"> |
+| <img src="https://github.com/user-attachments/assets/b716574f-35ab-4337-a02a-225382ae9708" alt="Login" width="600" height="420"> | <img src="https://github.com/user-attachments/assets/38515e04-2e3a-4f13-8936-667584fe8321" alt="Register" width="600" height="420"> |
 
 
 
